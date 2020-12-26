@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class TOC extends Component{
+    shouldComponentUpdate(newProps, newState){
+        //newProps.data는 TOC에 들어오는 바뀐 props.data가 들어있음 -> 이거 하려면 state값 원본 남아있어야 함 -> push 쓰면 안됨~
+        if(newProps.data !== this.props.data) return true;
+        else return false;
+    }
     render(){
         var lists = [];
         var data = this.props.data;
